@@ -43,7 +43,7 @@ while i == True:
                                 print("CHANGE - Disconnecting voice vlan from VPN, main link is down")
                                 update = dashboard.appliance.updateNetworkApplianceVpnSiteToSiteVpn(networkId=network['networkId'], mode='spoke', **vpn)
                             elif subnet['localSubnet'] == '192.168.241.0/24' and subnet['useVpn'] == False:
-                                print("Main link is down, voice vlan is disconnected of the VPN.")
+                                print("Primary uplink is down, voice vlan is disconnected of the VPN.")
         except TypeError as e:
             print(e)
         except meraki.APIError as e:
