@@ -16,7 +16,7 @@ while i == True:
                     print(network['uplinks'])
                     if uplinks['interface']=='wan1' and uplinks['status']=='active':
                         #print(network)
-                        print("Enlace Primario activo")
+                        print("Primaty Uplink is Active")
                         vpn = dashboard.appliance.getNetworkApplianceVpnSiteToSiteVpn(networkId=network['networkId'])
                         for subnet in vpn['subnets']:
                         # --Change all the 192.168.241.0/24 showed in the script to the subnet that you want to disconnect from vpn in case of failure --
