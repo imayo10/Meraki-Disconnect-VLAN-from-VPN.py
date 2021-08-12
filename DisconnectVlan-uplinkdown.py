@@ -16,7 +16,7 @@ while i == True:
                     print(network['uplinks'])
                     if uplinks['interface']=='wan1' and uplinks['status']=='active':
                         #print(network)
-                        print("Primaty Uplink is Active")
+                        print("Primary Uplink is Active")
                         vpn = dashboard.appliance.getNetworkApplianceVpnSiteToSiteVpn(networkId=network['networkId'])
                         for subnet in vpn['subnets']:
                         # --Change all the 192.168.241.0/24 showed in the script to the subnet that you want to disconnect from vpn in case of failure --
@@ -28,11 +28,11 @@ while i == True:
                                 update = dashboard.appliance.updateNetworkApplianceVpnSiteToSiteVpn(
                                     networkId=network['networkId'], mode='spoke', **vpn)
                             elif subnet['localSubnet'] == '192.168.241.0/24' and subnet['useVpn'] == True:
-                                print("Main link is active, voice vlan is on VPN")
+                                print("Primary uplink is active, voice vlan is on VPN")
                     #In case of failure of the WAN1 link, the subnet will be disconnected from the VPN.
                     elif uplinks['interface']=='wan1' and uplinks['status']=='not connected' or uplinks['status']=='failed':
                         #print(network)
-                        print("Enlace principal esta caido")
+                        print("Primary uplink is down")
                         vpn = dashboard.appliance.getNetworkApplianceVpnSiteToSiteVpn(networkId=network['networkId'])
                         #print(vpn)
                         for subnet in vpn['subnets']:
